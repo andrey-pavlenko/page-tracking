@@ -4,7 +4,9 @@ html(lang="en")
     meta(charset="UTF-8")
     meta(http-equiv="X-UA-Compatible", content="IE=edge")
     meta(name="viewport", content="width=device-width, initial-scale=1.0")
+    link(rel="stylesheet", href="./index.css")
     title Document
   body 
-
-    p.bg-gray-600.text-red-300.font-bold Test
+    include ./views/header.pug
+    include ./views/content.pug
+    include ./views/footer.pug

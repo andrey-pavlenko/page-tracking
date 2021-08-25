@@ -5,12 +5,13 @@
   "main": "index.js",
   "scripts": {
     "clear:dist": "rm -rf ./dist",
+    "copy:fonts": "mkdir -p ./dist/fonts && cp ./src/fonts/*.woff* ./dist/fonts",
     "build:pug": "pug -s -o ./dist/ ./src/index.pug",
-    "build:css": "tailwindcss -m -i ./src/index.css -o ./dist/index.css",
-    "build": "npm run clear:dist && npm run build:pug && npm run build:css",
+    "build:css": "tailwindcss --postcss -m -i ./src/index.css -o ./dist/index.css",
+    "build": "npm run clear:dist && npm run copy:fonts && npm run build:pug && npm run build:css",
     "dev:pug": "pug -w -o ./dist/ ./src/index.pug",
-    "dev:css": "tailwindcss -w -i ./src/index.css -o ./dist/index.css",
-    "dev": "npm run clear:dist && concurrently -k -n pug,css -c bgRed,bgBlue \"npm run dev:pug\" \"npm run dev:css\""
+    "dev:css": "tailwindcss --postcss -w -i ./src/index.css -o ./dist/index.css",
+    "dev": "npm run clear:dist && npm run copy:fonts && concurrently -k -n pug,css -c bgRed,bgBlue \"npm run dev:pug\" \"npm run dev:css\""
   },
   "keywords": [],
   "author": "",
@@ -19,6 +20,7 @@
     "autoprefixer": "^10.3.2",
     "concurrently": "^6.2.1",
     "postcss": "^8.3.6",
+    "postcss-import": "^14.0.2",
     "pug-cli": "^1.0.0-alpha6",
     "tailwindcss": "^2.2.7"
   }
