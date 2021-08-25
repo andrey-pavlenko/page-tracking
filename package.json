@@ -1,0 +1,25 @@
+{
+  "name": "page-tracking",
+  "version": "0.0.1",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "clear:dist": "rm -rf ./dist",
+    "build:pug": "pug -s -o ./dist/ ./src/index.pug",
+    "build:css": "tailwindcss -m -i ./src/index.css -o ./dist/index.css",
+    "build": "npm run clear:dist && npm run build:pug && npm run build:css",
+    "dev:pug": "pug -w -o ./dist/ ./src/index.pug",
+    "dev:css": "tailwindcss -w -i ./src/index.css -o ./dist/index.css",
+    "dev": "npm run clear:dist && concurrently -k -n pug,css -c bgRed,bgBlue \"npm run dev:pug\" \"npm run dev:css\""
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "autoprefixer": "^10.3.2",
+    "concurrently": "^6.2.1",
+    "postcss": "^8.3.6",
+    "pug-cli": "^1.0.0-alpha6",
+    "tailwindcss": "^2.2.7"
+  }
+}
